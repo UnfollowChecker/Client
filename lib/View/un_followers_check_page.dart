@@ -23,7 +23,9 @@ class _UnFollowCheckpageState extends State<UnFollowCheckpage> {
     super.initState();
     unfollower = getUnfollow(widget.userName, "unfollowers").then((value) {
       for (int i = 0; i < value.user!.length; i++) {
-        list.add(value.user![i]);
+        if (value.user![i].type == "User") {
+          list.add(value.user![i]);
+        }
       }
       return value;
     });
@@ -41,7 +43,7 @@ class _UnFollowCheckpageState extends State<UnFollowCheckpage> {
           login: "검색결과가 존재하지 않습니다.",
           htmlUrl: "https://github.com/asdfsdgdfgr",
           avatarUrl:
-              "https://search.pstatic.net/sunny/?src=https%3A%2F%2Flive.staticflickr.com%2F3505%2F4070809932_21ff533bed.jpg&type=sc960_832");
+          "https://search.pstatic.net/sunny/?src=https%3A%2F%2Flive.staticflickr.com%2F3505%2F4070809932_21ff533bed.jpg&type=sc960_832");
       result.add(user);
     }
     return result;
